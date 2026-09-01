@@ -143,9 +143,14 @@ a {
 }
 
 .brand img {
-  width: 36px;
-  height: 36px;
+  width: 42px;
+  height: 42px;
+  border: 2px solid var(--ink);
+  border-radius: 9px;
+  background: var(--ink);
+  box-shadow: 3px 3px 0 var(--red);
   image-rendering: pixelated;
+  object-fit: cover;
 }
 
 .brand-name {
@@ -1813,8 +1818,8 @@ a {
   }
 
   .brand img {
-    width: 31px;
-    height: 31px;
+    width: 36px;
+    height: 36px;
   }
 
   .hero {
