@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#1a2126">
+    <meta name="description" content="SketchRace is a bite-sized iPhone racing-line puzzle. Draw one lap, chase a faster line, and repeat.">
+    <meta property="og:title" content="SketchRace — Draw a line. Chase the time.">
+    <meta property="og:description" content="A pocket-sized racing line puzzle for iPhone. Draw one lap, then chase the time.">
+    <meta property="og:type" content="website">
+    <title>SketchRace — Draw a line. Chase the time.</title>
+    <link rel="icon" type="image/svg+xml" href="assets/brand/sketchrace-icon.svg">
+    <link rel="preload" href="assets/fonts/PressStart2P-Regular.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="site-grain" aria-hidden="true"></div>
+
+    <header class="site-header" data-header>
+      <div class="nav-wrap">
+        <a class="brand" href="#top" aria-label="SketchRace home">
+          <img src="assets/brand/sketchrace-icon.svg" alt="" width="36" height="36">
+          <span class="brand-name">SKETCH<span>RACE</span></span>
+        </a>
+
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">
+          <span class="menu-toggle-label">Menu</span>
+          <span class="menu-icon" aria-hidden="true"><i></i><i></i></span>
+        </button>
+
+        <nav class="site-menu" id="site-menu" aria-label="Primary navigation">
+          <a href="#how-it-works">How it works</a>
+          <a href="#circuits">The circuits</a>
+          <a href="#cars">Garage</a>
+          <a class="nav-cta" href="#demo">Try the demo <span aria-hidden="true">↗</span></a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="hero section-shell" id="top" aria-labelledby="hero-title">
+        <div class="hero-copy reveal">
+          <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> A POCKET-SIZED RACING LINE PUZZLE</p>
+          <h1 id="hero-title">Draw a line.<br><span>Chase the time.</span></h1>
+          <p class="hero-lede">SketchRace turns a single finger stroke into a full lap. Find the cleanest line, let the car rip, then shave off the seconds that got away.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#demo">Draw your lap <span aria-hidden="true">→</span></a>
+            <a class="text-link" href="#how-it-works">See how it works <span aria-hidden="true">↓</span></a>
+          </div>
+          <dl class="hero-facts" aria-label="SketchRace at a glance">
+            <div>
+              <dt>36</dt>
+              <dd>circuits to master</dd>
+            </div>
+            <div>
+              <dt>3</dt>
+              <dd>championships</dd>
+            </div>
+            <div>
+              <dt>1</dt>
+              <dd>finger to drive</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="hero-demo-wrap reveal reveal-delay-2" id="demo">
+          <div class="arcade-card" aria-label="Interactive SketchRace demo">
+            <div class="arcade-header">
+              <span class="arcade-status"><i aria-hidden="true"></i> LIVE DEMO</span>
+              <span class="arcade-mode">LANDSCAPE MODE</span>
+            </div>
+            <div class="race-screen" data-theme="meadow">
+              <div class="screen-hud screen-hud-left">
+                <span class="hud-label">RUN</span>
+                <strong id="run-number">01</strong>
+              </div>
+              <div class="screen-hud screen-hud-right">
+                <span class="hud-label">BEST</span>
+                <strong id="best-time">—:—.—</strong>
+              </div>
+              <div class="screen-label" id="screen-world-label">MEADOW / FIRST LOOP</div>
+              <svg class="race-map" id="race-map" viewBox="0 0 720 430" role="img" aria-labelledby="demo-map-title demo-map-desc" tabindex="0">
+                <title id="demo-map-title">A playable SketchRace circuit</title>
+                <desc id="demo-map-desc">Drag across the circuit to sketch a racing line, then run the lap.</desc>
+                <image id="theme-background" href="assets/backgrounds/meadow.png" x="0" y="0" width="720" height="430" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></image>
+                <rect class="screen-tint" x="0" y="0" width="720" height="430"></rect>
+                <path class="track-path track-outline" id="track-outline" d="M 122 278 C 104 190 168 100 300 76 C 444 50 580 94 610 190 C 642 290 536 350 410 330 C 308 314 266 256 214 266 C 174 274 152 312 122 278 Z"></path>
+                <path class="track-path track-road" id="track-road" d="M 122 278 C 104 190 168 100 300 76 C 444 50 580 94 610 190 C 642 290 536 350 410 330 C 308 314 266 256 214 266 C 174 274 152 312 122 278 Z"></path>
+                <path class="track-path track-center" id="track-center" d="M 122 278 C 104 190 168 100 300 76 C 444 50 580 94 610 190 C 642 290 536 350 410 330 C 308 314 266 256 214 266 C 174 274 152 312 122 278 Z"></path>
+                <path class="ghost-line" id="ghost-line" d="M 132 270 C 122 190 180 116 306 92 C 436 67 558 106 588 190 C 614 266 526 326 414 307 C 314 290 262 238 212 248 C 174 256 160 294 132 270 Z"></path>
+                <path class="drawn-line" id="drawn-line" d=""></path>
+                <g class="start-grid" aria-hidden="true">
+                  <rect x="107" y="264" width="8" height="17"></rect><rect x="117" y="266" width="8" height="17"></rect>
+                  <rect x="107" y="281" width="8" height="17"></rect><rect x="117" y="283" width="8" height="17"></rect>
+                </g>
+                <g class="apex-markers" aria-hidden="true">
+                  <circle cx="303" cy="88" r="6"></circle><circle cx="581" cy="188" r="6"></circle><circle cx="406" cy="316" r="6"></circle>
+                </g>
+                <g class="race-car" id="demo-car" aria-hidden="true">
+                  <image id="demo-car-image" href="assets/cars/street.png" x="-36" y="-24" width="72" height="48" preserveAspectRatio="xMidYMid meet"></image>
+                </g>
+                <g class="map-annotation" aria-hidden="true">
+                  <path d="M 312 54 L 312 72" /><path d="M 306 60 L 312 54 L 318 60" />
+                  <text x="324" y="56">APEX</text>
+                </g>
+              </svg>
+              <div class="screen-footer">
+                <span id="demo-phase">DRAW / RUN / REPEAT</span>
+                <span class="screen-dot" aria-hidden="true"></span>
+                <span>TOUCH TO SKETCH</span>
+              </div>
+              <div class="screen-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+            </div>
+            <div class="demo-panel">
+              <div class="demo-panel-topline">
+                <span class="panel-label">SET YOUR LINE</span>
+                <span class="demo-status" id="demo-status" role="status" aria-live="polite">Drag on the track to draw</span>
+              </div>
+              <div class="demo-controls">
+                <div class="control-group">
+                  <span class="control-label">SURFACE</span>
+                  <div class="segmented-control" role="group" aria-label="Choose a surface">
+                    <button class="segment is-active" type="button" data-theme-choice="meadow" aria-pressed="true">Meadow</button>
+                    <button class="segment" type="button" data-theme-choice="canyon" aria-pressed="false">Canyon</button>
+                    <button class="segment" type="button" data-theme-choice="city" aria-pressed="false">City</button>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <span class="control-label">CAR</span>
+                  <div class="segmented-control" role="group" aria-label="Choose a car">
+                    <button class="segment is-active" type="button" data-car-choice="street" aria-pressed="true">Street</button>
+                    <button class="segment" type="button" data-car-choice="formula" aria-pressed="false">Formula</button>
+                    <button class="segment" type="button" data-car-choice="rally" aria-pressed="false">Rally</button>
+                  </div>
+                </div>
+              </div>
+              <div class="demo-actions">
+                <button class="button button-primary button-small" type="button" id="run-lap">Run the lap <span aria-hidden="true">→</span></button>
+                <button class="button button-quiet" type="button" id="reset-demo">Reset line</button>
+              </div>
+            </div>
+          </div>
+          <p class="demo-note"><span aria-hidden="true">✦</span> A tiny taste of the real thing. No sign-in. No lap timer pressure.</p>
+        </div>
+      </section>
+
+      <section class="loop-section section-shell" id="how-it-works" aria-labelledby="loop-title">
+        <div class="section-intro reveal">
+          <p class="eyebrow">THE LOOP</p>
+          <h2 id="loop-title">Every mistake<br>is a better lap.</h2>
+          <p>There is no steering wheel to wrestle. The line is the whole game—and it is surprisingly hard to get right.</p>
+        </div>
+        <div class="steps-list">
+          <article class="step reveal" style="--step-index: 0">
+            <div class="step-number">01</div>
+            <div class="step-visual step-visual-draw" aria-hidden="true">
+              <svg viewBox="0 0 250 150">
+                <path class="mini-track" d="M 34 92 C 26 50 66 24 112 32 C 160 40 212 25 218 70 C 223 111 176 128 131 108 C 90 90 72 121 34 92 Z"></path>
+                <path class="mini-line" d="M 38 88 C 38 52 70 34 112 40 C 153 47 199 34 205 72 C 211 99 170 117 132 99 C 91 81 72 112 38 88 Z"></path>
+                <circle class="mini-start" cx="37" cy="89" r="6"></circle>
+                <path class="mini-arrow" d="M 108 18 L 108 38 M 101 25 L 108 18 L 115 25"></path>
+              </svg>
+            </div>
+            <div class="step-copy"><h3>Draw the line</h3><p>One closed loop. Take the wide entry, clip the apex, leave yourself room on exit.</p></div>
+          </article>
+          <article class="step reveal" style="--step-index: 1">
+            <div class="step-number">02</div>
+            <div class="step-visual step-visual-run" aria-hidden="true">
+              <div class="mini-telemetry"><span>00:11.48</span><i></i></div>
+              <img src="assets/cars/formula.png" alt="" width="220" height="147">
+              <span class="speed-mark speed-mark-one">+08</span><span class="speed-mark speed-mark-two">+12</span>
+            </div>
+            <div class="step-copy"><h3>Let it rip</h3><p>Watch the car execute your idea. Grass slows you down. Barriers keep the honest lines honest.</p></div>
+          </article>
+          <article class="step reveal" style="--step-index: 2">
+            <div class="step-number">03</div>
+            <div class="step-visual step-visual-repeat" aria-hidden="true">
+              <span class="repeat-time">00:09.52</span>
+              <span class="repeat-label">NEW BEST</span>
+              <div class="medal-row"><i></i><i></i><i class="is-gold"></i></div>
+              <div class="repeat-arrow" aria-hidden="true">↻</div>
+            </div>
+            <div class="step-copy"><h3>Chase the time</h3><p>Replay the run, read the ghost line, and redraw until the track finally gives up a second.</p></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="circuits-section" id="circuits" aria-labelledby="circuits-title">
+        <div class="section-shell circuits-shell">
+          <div class="circuits-copy reveal">
+            <p class="eyebrow">THE WORLD IS YOUR TRACK</p>
+            <h2 id="circuits-title">Three surfaces.<br>One obsession.</h2>
+            <p>Start clean in the meadow, find your nerve in the canyon, then take the lights of the city. Each environment asks a slightly different question of your line.</p>
+            <div class="world-list" role="tablist" aria-label="Choose a circuit environment">
+              <button class="world-tab is-active" type="button" role="tab" aria-selected="true" data-world-choice="meadow">
+                <span class="world-number">01</span><span class="world-name">Meadow</span><span class="world-note">soft landings</span><span class="world-arrow" aria-hidden="true">↗</span>
+              </button>
+              <button class="world-tab" type="button" role="tab" aria-selected="false" data-world-choice="canyon">
+                <span class="world-number">02</span><span class="world-name">Canyon</span><span class="world-note">hard brakes</span><span class="world-arrow" aria-hidden="true">↗</span>
+              </button>
+              <button class="world-tab" type="button" role="tab" aria-selected="false" data-world-choice="city">
+                <span class="world-number">03</span><span class="world-name">City</span><span class="world-note">late nights</span><span class="world-arrow" aria-hidden="true">↗</span>
+              </button>
+            </div>
+          </div>
+          <div class="world-window reveal reveal-delay-2" data-world="meadow">
+            <div class="world-window-top"><span id="world-index">01 / 03</span><span id="world-condition">DRY / OPEN</span></div>
+            <img id="world-image" src="assets/backgrounds/meadow.png" alt="Pixel-art meadow surface" width="960" height="540">
+            <div class="world-overlay"></div>
+            <svg class="world-map" viewBox="0 0 540 360" aria-hidden="true">
+              <path class="world-track-outline" id="world-track-outline" d="M 78 230 C 59 155 110 84 210 65 C 322 43 439 78 462 155 C 488 233 404 291 309 275 C 230 261 197 214 157 224 C 117 233 103 257 78 230 Z"></path>
+              <path class="world-track-road" id="world-track-road" d="M 78 230 C 59 155 110 84 210 65 C 322 43 439 78 462 155 C 488 233 404 291 309 275 C 230 261 197 214 157 224 C 117 233 103 257 78 230 Z"></path>
+              <path class="world-track-center" id="world-track-center" d="M 78 230 C 59 155 110 84 210 65 C 322 43 439 78 462 155 C 488 233 404 291 309 275 C 230 261 197 214 157 224 C 117 233 103 257 78 230 Z"></path>
+              <path class="world-ghost" d="M 87 223 C 74 157 119 98 214 79 C 317 59 421 91 445 156 C 465 218 394 268 312 253 C 236 239 197 197 155 209 C 122 218 108 243 87 223 Z"></path>
+              <circle class="world-start" cx="78" cy="230" r="7"></circle>
+            </svg>
+            <div class="world-window-label"><span id="world-label">MEADOW</span><small id="world-subtitle">FIRST LOOP / ROOKIE CUP</small></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="garage-section section-shell" id="cars" aria-labelledby="garage-title">
+        <div class="garage-header reveal">
+          <p class="eyebrow">THE GARAGE</p>
+          <h2 id="garage-title">Pick a personality.</h2>
+          <p>Same line, different attitude. Tune your instinct to the surface and find the machine that makes your hands look clever.</p>
+        </div>
+        <div class="garage-layout">
+          <div class="garage-stage reveal">
+            <div class="garage-stage-grid" aria-hidden="true"></div>
+            <div class="garage-bay-label"><span>SELECTED MACHINE</span><strong id="garage-code">ST-01</strong></div>
+            <img id="garage-car" class="garage-car" src="assets/cars/street.png" alt="Street car shown from above" width="480" height="320">
+            <div class="garage-stage-shadow" aria-hidden="true"></div>
+            <span class="garage-rotate" aria-hidden="true">DRAG / RACE / REPEAT</span>
+          </div>
+          <div class="garage-info reveal reveal-delay-1">
+            <div class="garage-tabs" role="tablist" aria-label="Choose a car">
+              <button class="garage-tab is-active" type="button" role="tab" aria-selected="true" data-garage-choice="street">STREET</button>
+              <button class="garage-tab" type="button" role="tab" aria-selected="false" data-garage-choice="formula">FORMULA</button>
+              <button class="garage-tab" type="button" role="tab" aria-selected="false" data-garage-choice="rally">RALLY</button>
+            </div>
+            <div class="garage-copy">
+              <div class="garage-class"><span id="garage-class">EVERYDAY HERO</span><span class="garage-led" aria-hidden="true"></span></div>
+              <h3 id="garage-name">Street</h3>
+              <p id="garage-description">Forgiving on entry, steady through the bends. The one that teaches you why a clean exit matters.</p>
+            </div>
+            <dl class="specs" aria-label="Street car specifications">
+              <div class="spec-row"><dt>ASPHALT</dt><dd><span><i id="spec-asphalt" style="width: 72%"></i></span><strong id="spec-asphalt-value">72</strong></dd></div>
+              <div class="spec-row"><dt>ACCELERATION</dt><dd><span><i id="spec-acceleration" style="width: 64%"></i></span><strong id="spec-acceleration-value">64</strong></dd></div>
+              <div class="spec-row"><dt>OFF-ROAD</dt><dd><span><i id="spec-offroad" style="width: 48%"></i></span><strong id="spec-offroad-value">48</strong></dd></div>
+            </dl>
+            <p class="garage-footnote"><span aria-hidden="true">✦</span> Unlock new classes by finishing a championship.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="finish-section" aria-labelledby="finish-title">
+        <div class="finish-checkers" aria-hidden="true"></div>
+        <div class="finish-inner section-shell reveal">
+          <div class="finish-stamp" aria-hidden="true"><span>ONE MORE</span><strong>LAP</strong><span>ALWAYS</span></div>
+          <div class="finish-copy">
+            <p class="eyebrow eyebrow-light">THE PIT WALL</p>
+            <h2 id="finish-title">Your best lap<br>is still a sketch.</h2>
+            <p>SketchRace is in the pit lane now. Follow the build, grab the next test drive, and bring a line worth racing.</p>
+            <a class="button button-primary button-light" href="https://github.com/martynpekala/SketchRace" target="_blank" rel="noreferrer">See the build on GitHub <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="section-shell footer-grid">
+        <a class="brand footer-brand" href="#top" aria-label="SketchRace home">
+          <img src="assets/brand/sketchrace-icon.svg" alt="" width="32" height="32">
+          <span class="brand-name">SKETCH<span>RACE</span></span>
+        </a>
+        <p class="footer-note">Made for iPhone. Landscape-first.<br>Local-first. One more lap.</p>
+        <div class="footer-links">
+          <a href="https://github.com/martynpekala/SketchRace" target="_blank" rel="noreferrer">Source code <span aria-hidden="true">↗</span></a>
+          <a href="#demo">Play the demo <span aria-hidden="true">↗</span></a>
+        </div>
+        <p class="footer-copyright">© 2026 SketchRace</p>
+      </div>
+    </footer>
+
+    <noscript>
+      <div class="noscript-note">SketchRace works best with JavaScript enabled. The full game is still coming to iPhone.</div>
+    </noscript>
+  </body>
+</html>
